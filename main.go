@@ -1,32 +1,42 @@
 package main
 
 import (
-	"github.com/gin-gonic/gin"
-	ss "strings"
+	"fmt"
+	"github.com/golang/sync/errgroup"
+	"net/http"
+	"os"
+	"time"
 )
 
-func get_wrapper(c *gin.Context, t string) func(int, interface{}) {
-	switch t {
-	case "XML":
-		return c.XML
-	case "YAML":
-		return c.YAML
-	case "INDENTEDJSON":
-		return c.IndentedJSON
-	default:
-		return c.JSON
-	}
-}
+var (
+	g errgroup.Group
+)
 
 func main() {
-	r := gin.Default()
-	r.GET("/ping", func(c *gin.Context) {
-		t := c.DefaultQuery("type", "JSON")
-		t = ss.ToUpper(t)
-		get_wrapper(c, t)(200, gin.H{
-			"message": "pong",
-		})
+	//
+	s1 := &http.Server{
+		Addr:         ":8080",
+		Handler:      PingPongHandler(),
+		ReadTimeout:  500 * time.Millisecond,
+		WriteTimeout: 500 * time.Millisecond,
+	}
 
+	s2 := &http.Server{
+		Addr:         ":8081",
+		Handler:      ProfileHandler(),
+		ReadTimeout:  500 * time.Millisecond,
+		WriteTimeout: 500 * time.Millisecond,
+	}
+
+	g.Go(func() error {
+		return s1.ListenAndServe()
 	})
-	r.Run() // listen and serve on 0.0.0.0:8080
+	g.Go(func() error {
+		return s2.ListenAndServe()
+	})
+
+	if err := g.Wait(); err != nil {
+		fmt.Fprintf(os.Stderr, "err? %v\n", err)
+	}
+
 }
