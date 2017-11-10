@@ -1,7 +1,9 @@
 package common
 
 import (
+	"fmt"
 	"sync"
+	"time"
 )
 
 type (
@@ -12,8 +14,9 @@ type (
 
 	CounterMap map[string]*AtomUint
 	Profile    struct {
-		rw      sync.RWMutex
-		counter CounterMap
+		rw         sync.RWMutex
+		counter    CounterMap
+		classifier Classifier
 	}
 )
 
@@ -43,7 +46,12 @@ func (p *Profile) Inc(name string, i uint) {
 		p.counter[name] = cnt
 	}
 	cnt.Inc(i)
+}
 
+func (p *Profile) Since(start time.Time) {
+	d := time.Since(start)
+	cls := p.classifier.Classify(d)
+	p.Inc(cls, 1)
 }
 
 func (p *Profile) Get(name string) uint {
@@ -56,8 +64,29 @@ func (p *Profile) Get(name string) uint {
 	return 0
 }
 
+func (p *Profile) Declare(val interface{}, cls string) {
+	p.classifier.Declare(val, cls)
+}
+
+func (p *Profile) String() string {
+	slc := p.classifier.List()
+	slc = append(slc, slc[len(slc)-1]+"+")
+	s := ""
+	total := uint(0)
+	for _, v := range slc {
+		if cnt, ok := p.counter[v]; ok {
+			total = total + cnt.Get()
+			s = s + fmt.Sprintf("%-20s %d\n", v, cnt.Get())
+		}
+	}
+	return s + fmt.Sprintf("%-20s %d\n", "total", total)
+}
+
 func NewProfile() *Profile {
-	return &Profile{counter: make(CounterMap)}
+	return &Profile{
+		counter:    make(CounterMap),
+		classifier: NewDurationClassifier(),
+	}
 }
 
 func TheProfile() *Profile {
