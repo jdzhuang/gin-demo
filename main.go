@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/golang/sync/errgroup"
+	"golang.org/x/sync/errgroup"
 	"net/http"
 	"os"
 	"time"

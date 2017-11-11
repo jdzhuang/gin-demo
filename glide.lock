@@ -1,17 +1,12 @@
-hash: ae57edf9c8c87dd60daf5811b25e361b9a7b9324405f5b7219fe598a3a19d9d9
-updated: 2017-11-09T19:48:19.265970617+08:00
+hash: 11f45660c7f907fc93470588415a351c97b303b52111d3fd6c00c57968e96e84
+updated: 2017-11-11T18:39:33.455371+08:00
 imports:
-- name: github.com/dustin/go-broadcast
-  version: 3bdf6d4a7164a50bc19d5f230e2981d87d2584f1
 - name: github.com/gin-contrib/sse
   version: 22d885f9ecc78bf4ee5d72b937e4bbcdc58e8cae
-- name: github.com/gin-gonic/autotls
-  version: 8ca25fbde72bb72a00466215b94b489c71fcb815
 - name: github.com/gin-gonic/gin
   version: d459835d2b077e44f7c9b453505ee29881d5d12d
   subpackages:
   - binding
-  - binding/example
   - render
 - name: github.com/golang/protobuf
   version: 1643683e1b54a9e88ad26d98f81400c8c9d9f4f9
@@ -31,12 +26,6 @@ imports:
   - ptypes/struct
   - ptypes/timestamp
   - ptypes/wrappers
-- name: github.com/golang/sync
-  version: fd80eb99c8f653c847d294a001bdf2a3a6f768f5
-  subpackages:
-  - errgroup
-- name: github.com/manucorporat/stats
-  version: 8f2d6ace262eba462e9beb552382c98be51d807b
 - name: github.com/mattn/go-isatty
   version: a5cdd64afdee435007ee3e9f6ed4684af949d568
 - name: github.com/ugorji/go
@@ -52,6 +41,10 @@ imports:
   version: a337091b0525af65de94df2eb7e98bd9962dcbe2
   subpackages:
   - context
+- name: golang.org/x/sync
+  version: fd80eb99c8f653c847d294a001bdf2a3a6f768f5
+  subpackages:
+  - errgroup
 - name: golang.org/x/sys
   version: 95c6576299259db960f6c5b9b69ea52422860fce
   subpackages:
@@ -67,42 +60,4 @@ imports:
   version: 5f1438d3fca68893a817e4a66806cea46a9e4ebf
 - name: gopkg.in/yaml.v2
   version: eb3733d160e74a9c7e442f435eb3bea458e1d19f
-testImports:
-- name: github.com/davecgh/go-spew
-  version: ecdeabc65495df2dec95d7c4a4c3e021903035e5
-  subpackages:
-  - spew
-- name: github.com/mailru/easyjson
-  version: 5f62e4f3afa2f576dc86531b7df4d966b19ef8f8
-  subpackages:
-  - buffer
-  - jlexer
-  - jwriter
-- name: github.com/philhofer/fwd
-  version: bb6d471dc95d4fe11e432687f8b70ff496cf3136
-- name: github.com/pmezard/go-difflib
-  version: 792786c7400a136282c1664665ae0a8db921c6c2
-  subpackages:
-  - difflib
-- name: github.com/pquerna/ffjson
-  version: d49c2bc1aa135aad0c6f4fc2056623ec78f5d5ac
-  subpackages:
-  - ffjson
-  - fflib/v1
-  - fflib/v1/internal
-- name: github.com/stretchr/testify
-  version: 2aa2c176b9dab406a6970f6a55f513e8a8c8b18f
-  subpackages:
-  - assert
-- name: github.com/tinylib/msgp
-  version: 3b556c64540842d4f82967be066a7f7fffc3adad
-  subpackages:
-  - msgp
-- name: golang.org/x/sync
-  version: fd80eb99c8f653c847d294a001bdf2a3a6f768f5
-  subpackages:
-  - errgroup
-- name: gopkg.in/check.v1
-  version: 20d25e2804050c1cd24a7eea1e7a6447dd0e74ec
-- name: gopkg.in/go-playground/assert.v1
-  version: 4f4dfbc7d1c48336cf93399deae81aa9067e88af
+testImports: []

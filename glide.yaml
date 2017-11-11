@@ -1,4 +1,47 @@
-package: .
+package: gin-demo
 import:
-- package: github.com/gin-gonic/gin
-  version: v1.2
+ - package: github.com/gin-gonic/gin
+   version: v1.2
+ - package: github.com/golang/protobuf
+   version: 1643683e1b54a9e88ad26d98f81400c8c9d9f4f9
+   subpackages:
+   - descriptor
+   - jsonpb/jsonpb_test_proto
+   - proto
+   - proto/proto3_proto
+   - proto/testdata
+   - protoc-gen-go/descriptor
+   - protoc-gen-go/generator
+   - protoc-gen-go/grpc
+   - protoc-gen-go/plugin
+   - ptypes
+   - ptypes/any
+   - ptypes/duration
+   - ptypes/struct
+   - ptypes/timestamp
+   - ptypes/wrappers
+ - package: golang.org/x/crypto
+   ref: 6a293f2d4b14b8e6d3f0539e383f6d0d30fce3fd
+   subpackages:
+   - acme
+   - acme/autocert
+ - package: golang.org/x/net
+   ref: a337091b0525af65de94df2eb7e98bd9962dcbe2
+   subpackages:
+   - context
+ - package: golang.org/x/sync
+   ref: fd80eb99c8f653c847d294a001bdf2a3a6f768f5
+   subpackages:
+   - errgroup
+ - package: golang.org/x/sys
+   ref: 95c6576299259db960f6c5b9b69ea52422860fce
+   subpackages:
+   - plan9
+   - unix
+   - windows
+   - windows/registry
+   - windows/svc
+   - windows/svc/debug
+   - windows/svc/eventlog
+   - windows/svc/mgr
+
