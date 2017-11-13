@@ -7,7 +7,7 @@ import (
 	"time"
 )
 
-func ProfileHandler() http.Handler {
+func profileHandler() http.Handler {
 	e := gin.New()
 	e.Use(gin.Recovery())
 	p := comm.TheProfile()

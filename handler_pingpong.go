@@ -8,7 +8,7 @@ import (
 	"time"
 )
 
-func PingPongHandler() http.Handler {
+func pingpongHandler() http.Handler {
 	e := gin.New()
 	e.Use(gin.Recovery())
 	//p := comm.TheProfile()
