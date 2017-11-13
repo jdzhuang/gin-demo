@@ -16,14 +16,14 @@ func main() {
 
 	s1 := &http.Server{
 		Addr:         ":8080",
-		Handler:      PingPongHandler(),
+		Handler:      pingpongHandler(),
 		ReadTimeout:  500 * time.Millisecond,
 		WriteTimeout: 500 * time.Millisecond,
 	}
 
 	s2 := &http.Server{
 		Addr:         ":8081",
-		Handler:      ProfileHandler(),
+		Handler:      profileHandler(),
 		ReadTimeout:  500 * time.Millisecond,
 		WriteTimeout: 500 * time.Millisecond,
 	}

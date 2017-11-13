@@ -4,17 +4,17 @@
 
 *to build*
 ```sh
-sudo docker build ./ --tag "gin-demo:0.0.1"
+sudo docker build ./ --tag "gin-demo:0.1.2"
 ```
 
 *to run*
 ```sh
-sudo docker run --rm -d -p 127.0.0.1:80:8080 -p 127.0.0.1:81:8081 "gin-demo:0.0.1"
+sudo docker run --rm -d -p 127.0.0.1:80:8080 -p 127.0.0.1:81:8081 "gin-demo:0.1.2"
 ```
 
 *batch-request*
 ```sh
-for i in $(seq 0 500); do curl "http://127.0.0.1/ping?type=yaml"; usleep 10; done
+for i in $(seq 0 500); do curl "http://127.0.0.1/slow?type=yaml"; usleep 10; done
 ```
 
 *check-profile*
