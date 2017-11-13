@@ -10,7 +10,7 @@ const (
 	CLS20    = "20MS"
 	CLS50    = "50MS"
 	CLS100   = "100MS"
-	CLSLARGE = "100MS and above"
+	CLSLARGE = "100MS+"
 )
 
 func PrepareDurationClassifier() *DurationClassifier {
