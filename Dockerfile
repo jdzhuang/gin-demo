@@ -1,4 +1,4 @@
-FROM golang:1.8.4-alpine3.6 AS build-gin-demo
+FROM golang:1.8.5-alpine3.6 AS build-gin-demo
 MAINTAINER  jdzhuang<jiadong.zhuang@qq.com> 
 
 RUN mkdir -p /go/src/gin-demo/build
